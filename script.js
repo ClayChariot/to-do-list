@@ -59,7 +59,7 @@ function addTodo() {
     inputElement.name = name;
 
     // Step 3: Validate with regex (letters, numbers, single spaces between words)
-    const regex = /^[a-zA-ZčćžšđČĆŽŠĐ0-9]+(?: [a-zA-ZčćžšđČĆŽŠĐ0-9]+)*$/;
+    const regex = /^[A-Za-zČčĆćĐđŠšŽžА-Яа-яЉљЊњЋћЏџ]+(?: [A-Za-zČčĆćĐđŠšŽžА-Яа-яЉљЊњЋћЏџ]+)*$/;
 
     const isValid = regex.test(name);
     if(!isValid) {
@@ -90,3 +90,4 @@ function addTodo() {
 
   renderTodoList();
 }
+
