@@ -82,7 +82,7 @@ function addTodo() {
     inputElement.value = name;
 
     
-    const regex = /^(?! )[A-Za-zČčĆćĐđŠšŽžА-Яа-яЉљЊњЋћЏџ0-9!@#\$%\^\&\*\(\)\-\_\=\+\[\]\{\};:'",<>\.\?\/\\|`~€£¥₹¤§±×÷°²³½¾¿¡«»„“”•…†‡–—¨©®™✓✔✗✘★☆☑☐☒∞Ωµ\s]+(?<! )$/;
+    const regex = /^(?=.*\p{L})[\p{L}0-9!@#$%^&*()\-_=+\[\]{};:'",.<>?/\\|`~€£¥₹¤§±×÷°²³½¾¿¡«»„“”•]+(?: [\p{L}0-9!@#$%^&*()\-_=+\[\]{};:'",.<>?/\\|`~€£¥₹¤§±×÷°²³½¾¿¡«»„“”•]+)*$/u;
     const hasLetterOrDigit = /[A-Za-zČčĆćĐđŠšŽžА-Яа-яЉљЊњЋћЏџ0-9]/.test(name);
     const isValid = regex.test(name);
     
@@ -176,4 +176,5 @@ function populateTimeSelects(hoursSelect, minutesSelect) {
     minutesSelect.appendChild(option);
   }
 }
+
 
