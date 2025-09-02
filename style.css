@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(222, 233, 230);
+}
+
+h3 {
+  margin-left: 400px;
+}
+
+.todo-grid,
+.todo-input-grid {
+  display: grid;
+  grid-template-columns: 400px 170px 170px 100px;
+  column-gap: 10px;
+  row-gap: 10px;
+  justify-content: start;
+}
+
+.todo-input-grid {
+  margin-bottom: 5px;
+  align-items: stretch;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow: hidden;
+  }
+
+.name-input,
+.due-date-input,
+.time-input {
+  font-size: 15px;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.add-todo-button {
+  background-color: green;
+  color: white;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.delete-todo-button {
+  background-color: darkred;
+  color: white;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 22px;
+  padding-right: 22px;
+  border-radius: 10px;
+}
+
+.addedItemName,
+.addedItemDate,
+.addedItemTime {
+  text-align: center;
+}
+
+.addedItemName {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.addedItemDate,
+.addedItemTime,
+#form,
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#hours,
+.labela {
+  margin-right: 5px;
+}
+
+.error {
+  margin-top: 0px;
+  margin-bottom: 2px;
+  color: rgba(243, 6, 6, 0.878);
+  font-weight: 700;
+  max-width: 400px;
+   }
+

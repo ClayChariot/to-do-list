@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+  <title>podsetnik</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h3>PODSETNIK</h3>
+
+  <div class="todo-input-grid">
+    <input placeholder="unesi tekst" class="js-name-input name-input">
+    <input type="date" class="js-due-date-input due-date-input">
+    <form id="form" name="form">
+      <label for="hours" class="labela">Čas:</label>
+      <select id="hours" name="hours">
+        <option class="option" value="" selected>-</option>
+      </select>
+
+      <label for="minutes" class="labela">Minut:</label>
+      <select id="minutes" name="minutes">
+        <option class="option" value="" selected>-</option>
+      </select>
+    </form>
+    <button class="add-todo-button js-add-todo-button">DODAJ</button>
+  </div>
+  <div class="js-error error"></div>
+
+  <div class="js-todo-list todo-grid"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
