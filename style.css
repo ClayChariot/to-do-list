@@ -184,7 +184,7 @@ button:focus {
 @media (max-width: 898px) {
   .todo-grid,
   .todo-input-grid {
-    grid-template-columns: 1fr 13rem 11rem 8rem;
+    grid-template-columns: 1fr 13rem 12rem 8rem;
   }
 }
 
@@ -216,5 +216,6 @@ button:focus {
     width: 100%;
   }
 }
+
 
 
