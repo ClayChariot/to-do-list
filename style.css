@@ -32,7 +32,7 @@ h3 {
 .todo-input-grid {
   margin-top: 1.5rem;
   display: grid;
-  grid-template-columns: 23rem 9rem 13rem 10rem;
+  grid-template-columns: 20rem 13rem 13rem 10rem;
   column-gap: 5px;
   row-gap: 10px;
   justify-content: center;
@@ -47,6 +47,13 @@ h3 {
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.delete-todo-button-column,
+.add-todo-button-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .error-text {
@@ -83,9 +90,16 @@ select:hover {
   border-color: #888;
 }
 
+.due-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .date-time-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
   flex-wrap: nowrap;
 }
@@ -95,7 +109,7 @@ select:hover {
   width: 3em;
 }
 
-.time-label {
+.time-label, .due-date-label {
   margin-right: 1px;
 }
 
@@ -154,16 +168,23 @@ button:focus {
   outline-offset: 1px;
 }
 
-@media (max-width: 894px) {
+@media (max-width: 920px) {
 
   .todo-grid,
   .todo-input-grid {
-    grid-template-columns: 15rem 9rem 13rem 9rem;
+    grid-template-columns: 15rem 13rem 13rem 9rem;
   }
 
   .add-todo-button,
   .delete-todo-button {
     width: 9rem;
+  }
+}
+
+@media (max-width: 898px) {
+  .todo-grid,
+  .todo-input-grid {
+    grid-template-columns: 1fr 13rem 11rem 8rem;
   }
 }
 
@@ -176,13 +197,17 @@ button:focus {
   }
 
   .date-time-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .due-date {
     justify-content: center;
   }
 
   .due-date-input {
-    width: 80%;       /* increase from 40% */
-    min-width: 140px; /* ensure placeholder fits on larger phones */
-    margin: 0 auto;
+    width: 40%; /* or 100%, depending on your design */
   }
 
   .add-todo-button,
@@ -190,5 +215,3 @@ button:focus {
     width: 100%;
   }
 }
-
-
