@@ -36,7 +36,7 @@ function renderTodoList() {
       <div class="addedItemName">${name}</div>
       <div class="addedItemDate">${dueDateDisplay}</div>
       <div class="addedItemTime">${timeString}</div>
-      <div><button class="delete-todo-button">DELETE</button></div> 
+      <div class="delete-todo-button-column"><button class="delete-todo-button">DELETE</button></div>
     `;
     todoListHTML += html;
   });
@@ -198,4 +198,5 @@ function isDuplicateTask(newTask) {
     task.m === newTask.m
   );
 }
+
 
