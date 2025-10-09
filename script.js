@@ -3,28 +3,28 @@ const todoList = JSON.parse(localStorage.getItem("STORAGE_KEY")) || [];
 
 renderTodoList();
 
-const inputElement = document.querySelector(".js-name-input");
-const dateInputElement = document.querySelector(".js-due-date-input");
+const inputElement = document.querySelector(".name-input");
+const dateInputElement = document.querySelector(".due-date-input");
 const hoursSelect = document.getElementById("hours");
 const minutesSelect = document.getElementById("minutes");
-const errorElement = document.querySelector(".js-error");
+const errorElement = document.querySelector(".error-text");
 
 document.addEventListener("DOMContentLoaded", () => {
   populateTimeSelects(hoursSelect, minutesSelect);
 });
 
-document.querySelector(".js-add-todo-button")
+document.querySelector(".add-todo-button")
   .addEventListener("click", () => { addTodo(); });
 
-document.querySelector(".js-name-input")
+document.querySelector(".name-input")
   .addEventListener("keydown", (event) => { if (event.key === "Enter") { addTodo(); } });
 
 
 
 
 function renderTodoList() {
-  
-  sortTasks(todoList); // sort first
+
+  sortTasks(todoList);
 
   let todoListHTML = "";
 
@@ -36,18 +36,18 @@ function renderTodoList() {
       <div class="addedItemName">${name}</div>
       <div class="addedItemDate">${dueDateDisplay}</div>
       <div class="addedItemTime">${timeString}</div>
-      <div><button class="delete-todo-button js-delete-todo-button">UKLONI</button></div> 
+      <div><button class="delete-todo-button">DELETE</button></div> 
     `;
     todoListHTML += html;
   });
 
-  document.querySelector(".js-todo-list").innerHTML = todoListHTML;
+  document.querySelector(".todo-grid").innerHTML = todoListHTML;
 
-  document.querySelectorAll(".js-delete-todo-button")
+  document.querySelectorAll(".delete-todo-button")
     .forEach((deleteButton, index) => {
       deleteButton.addEventListener("click", () => {
         todoList.splice(index, 1);
-        errorElement.textContent = "";
+        errorElement.classList.remove("active");
         renderTodoList();
         saveTasks();
       });
@@ -69,10 +69,12 @@ function addTodo() {
 
   // Validate time input
   if ((h && !m) || (!h && m)) {
-    errorElement.textContent = "Niste uneli ispravno vreme!";
+    errorElement.textContent = "You haven't entered the correct time!";
+    errorElement.classList.add("active");
     return;
   } else if ((!sortDate && (h || m))) {
-    errorElement.textContent = "Niste uneli datum!";
+    errorElement.textContent = "You haven't entered a date!";
+    errorElement.classList.add("active");
     return;
   }
 
@@ -81,7 +83,8 @@ function addTodo() {
 
   // Check for duplicate
   if (isDuplicateTask(newTask)) {
-    errorElement.textContent = "identičan zadatak već postoji u listi!";
+    errorElement.textContent = "You have already added that task!";
+    errorElement.classList.add("active");
     return;
   }
 
@@ -127,7 +130,8 @@ function validateInputTask(inputElement) {
   let name = inputElement.value;
 
   if (!name) {
-    errorElement.textContent = "niste uneli zadatak!";
+    errorElement.textContent = "You haven't entered a task!";
+    errorElement.classList.add("active");
     return null;
   }
 
@@ -135,13 +139,14 @@ function validateInputTask(inputElement) {
   name = name.replace(/\s{2,}/g, ' ');
   name = name.replace(/(["'])\s+/g, "$1");
   name = name.replace(/\s+(["'])/g, "$1");
-  // inputElement.value = name;
+
   const regex = /^[\p{L}\p{N}\p{S}\p{P}]+(?: [\p{L}\p{N}\p{S}\p{P}]+)*$/u;
   const hasLetterOrDigit = /\p{L}|\p{N}/u.test(name);
   const isValid = regex.test(name);
 
   if (!isValid || !hasLetterOrDigit) {
-    errorElement.textContent = "neispravan unos!";
+    errorElement.textContent = "invalid task!";
+    errorElement.classList.add("active");
     return null;
   }
 
@@ -155,7 +160,7 @@ function validateInputDate(dateInputElement) {
   const sortDate = `${day}.${month}.${year}`; // for sorting
 
   const date = new Date(dateInputElement.value);
-  const days = ["Nedelja", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota"];
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const dayName = days[date.getDay()];
   const display = `${dayName} ${sortDate}.`; // for showing in DOM
 
@@ -186,7 +191,7 @@ function toTimestamp(task) {
   return new Date(year, month - 1, day, hours, mins).getTime();
 }
 function isDuplicateTask(newTask) {
-  return todoList.some(task => 
+  return todoList.some(task =>
     task.name.toUpperCase() === newTask.name.toUpperCase() &&
     task.sortDate === newTask.sortDate &&
     task.h === newTask.h &&
