@@ -17,9 +17,10 @@
       <input placeholder="enter a task" class="name-input">
       <div class="error-text"></div>
     </div>
-    
-    <label for="due-date">Date:</label>
-    <input type="date" id="due-date" class="due-date-input">
+    <div class="due-date">
+      <label for="due-date" class="due-date-label">Date:</label>
+      <input type="date" id="due-date" class="due-date-input">
+    </div>
 
     <div class="date-time-row">
       <label for="hours" class="time-label">Hours:</label>
@@ -32,8 +33,9 @@
         <option value="" selected>-</option>
       </select>
     </div>
-
-    <button class="add-todo-button">ADD</button>
+    <div class="add-todo-button-column">
+      <button class="add-todo-button">ADD</button>
+    </div>
   </div>
 
   <div class="todo-grid"></div>
@@ -42,4 +44,3 @@
 </body>
 
 </html>
-
