@@ -206,6 +206,11 @@ button:focus {
     justify-content: center;
   }
 
+  #hours,
+  #minutes {
+    width: 2.5em;  /* or adjust until no overlap */
+  }
+
   .due-date-input {
     width: 40%; /* or 100%, depending on your design */
   }
@@ -215,3 +220,4 @@ button:focus {
     width: 100%;
   }
 }
+
