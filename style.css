@@ -180,7 +180,8 @@ button:focus {
   }
 
   .due-date-input {
-    width: 40%;
+    width: 80%;       /* increase from 40% */
+    min-width: 140px; /* ensure placeholder fits on larger phones */
     margin: 0 auto;
   }
 
@@ -189,4 +190,5 @@ button:focus {
     width: 100%;
   }
 }
+
 
